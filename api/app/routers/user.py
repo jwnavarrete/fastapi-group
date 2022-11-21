@@ -29,9 +29,6 @@ def get_user(id: int, db: Session = Depends(get_db), ):
 
 @router.post("/", status_code=status.HTTP_201_CREATED, response_model=UserResponse)
 def create_user(user: UserCreate, db: Session = Depends(get_db)):
-    # hash the password - user.password
-    modelDataExistById(user.perfil_id, db, 'Perfil', PerfilModel)
-    
     hashed_password = utils.hash(user.password)
     user.password = hashed_password
 
@@ -47,8 +44,6 @@ def create_user(user: UserCreate, db: Session = Depends(get_db)):
 def update_post(id: int, userUpdate: UserUpdate, db: Session = Depends(get_db), current_user: int = Depends(oauth2.get_current_user)):
     hashed_password = utils.hash(userUpdate.password)
     userUpdate.password = hashed_password
-
-    modelDataExistById(userUpdate.perfil_id, db, 'Perfil', PerfilModel)
     post_query = db.query(UserModel).filter(UserModel.id == id)
 
     post = post_query.first()
