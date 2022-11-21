@@ -1,13 +1,14 @@
 version: "3.8"
 services:
-  backend:
-    container_name: tarificador_backend_dev
+  api:
+    container_name: groups
     build:
       context: ./
       dockerfile: Dockerfile
-    command: bash -c "alembic upgrade heads && uvicorn app.main:app --reload --host 0.0.0.0 --port 8000"
+      # alembic upgrade heads && 
+    command: bash -c "uvicorn app.main:app --reload --host 0.0.0.0 --port 8002"
     ports:
-      - 8000:8000
+      - 8002:8002
     networks:
       - dev-network
 

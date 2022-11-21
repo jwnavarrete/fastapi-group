@@ -5,7 +5,6 @@ from .. import oauth2
 from .. import utils
 from ..schemas.user import UserResponse, UserCreate, UserLogin, UserUpdate
 from ..models.User import UserModel
-from ..models.Perfil import PerfilModel
 from ..database import get_db
 from ..Lib.general import modelDataExistById
 
