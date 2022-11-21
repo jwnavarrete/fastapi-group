@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from .routers import  formula, post, parametro, parametroDetalle, grupo, subGrupo, user, auth, vote, perfil, logs, tipo, rubro, formulaDetalle, menu, menuPerfil
+from .routers import  user, auth
 
 from . import models
 from .database import engine
@@ -19,21 +19,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(perfil.router)
 app.include_router(user.router)
 app.include_router(auth.router)
-app.include_router(tipo.router)
-app.include_router(formula.router)
-app.include_router(rubro.router)
-app.include_router(menu.router)
-app.include_router(logs.router)
-app.include_router(formulaDetalle.router)
-app.include_router(menuPerfil.router)
-app.include_router(parametro.router)
-app.include_router(parametroDetalle.router)
-app.include_router(grupo.router)
-app.include_router(subGrupo.router)
-
 
 
 #app.include_router(post.router)

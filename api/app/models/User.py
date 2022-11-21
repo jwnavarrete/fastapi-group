@@ -11,8 +11,6 @@ class UserModel(Base):
     id = Column(Integer, primary_key=True, nullable=False)
     email = Column(String, nullable=False, unique=True)
     password = Column(String, nullable=False)
-    perfil_id = Column(Integer, ForeignKey("perfil.id", ondelete="CASCADE"), nullable=False)
-    perfil = relationship("PerfilModel")
     estado = Column(String(1), nullable=False)
     created_at = Column(TIMESTAMP(timezone=True), nullable=False, server_default=text('now()'))
 
